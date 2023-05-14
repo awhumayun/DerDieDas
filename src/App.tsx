@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Header from "./components/header/header";
+import Flag from "./components/flag/flag";
+import InputModal from "./components/InputModal/InputModal";
+import { Genders } from "./constants/genders";
 
-function App() {
+const App = () => {
+  const [wordGender, setWordGender] = useState(Genders.None);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Flag wordGender={wordGender} />
+      <InputModal wordGender={wordGender} setWordGender={setWordGender} />
+    </>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,12 @@
+@keyframes slideToTop {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.slideToTop {
+  animation: slideToTop 2s forwards;
+}
