@@ -1,6 +1,6 @@
 import { Genders, genders } from "../../constants/genders";
 import { articles } from "../../constants/articles";
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styles from "./flag.module.css";
 
 interface FlagProps {
@@ -9,6 +9,7 @@ interface FlagProps {
 
 const Flag: FC<FlagProps> = (props) => {
   const { wordGender } = props;
+  const [isFinished, setIsFinished] = useState([false, false, false]);
 
   const usePrevious = (value: any) => {
     const ref = useRef();
@@ -42,10 +43,17 @@ const Flag: FC<FlagProps> = (props) => {
         <div
           key={gender}
           className={`h-[33.34vh] opacity-50 flex flex-col justify-center ${gender.toLowerCase()} ${
-            styles.start
-          } ${getStartStyle(gender)} ${
-            gender === wordGender ? styles.highlighted : ""
-          } ${gender === previousWordGender ? styles.unhighlighted : ""}`}
+            !isFinished[i] ? styles.start + " " + getStartStyle(gender) : ""
+          } ${gender === wordGender ? styles.highlighted : ""} ${
+            gender === previousWordGender && wordGender !== previousWordGender
+              ? styles.unhighlighted
+              : ""
+          }`}
+          onAnimationEnd={() =>
+            setIsFinished(
+              isFinished.map((element, index) => (i === index ? true : element))
+            )
+          }
         >
           <span className='text-white text-center text-9xl'>{articles[i]}</span>
         </div>
