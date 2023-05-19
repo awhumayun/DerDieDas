@@ -1,8 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { Genders } from "../../constants/genders";
-import { determineGender } from "../../helpers/genders";
-import styles from "./InputModal.module.css";
+import { getGermanGender } from "../../services/germanGender";
+import Loader from "../loader/loader";
+import styles from "./inputModal.module.css";
 
 interface InputModalProps {
   wordGender: Genders;
@@ -16,14 +17,21 @@ const InputModal: FC<InputModalProps> = (props) => {
   const [wordInput, setWordInput] = useState("");
   const [deboundedWord] = useDebounce(word, 1000);
   const [appear, setAppear] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(
-    () =>
-      deboundedWord
-        ? setWordGender(determineGender(deboundedWord))
-        : setWordGender(Genders.None),
-    [setWordGender, deboundedWord]
-  );
+  useEffect(() => {
+    const fetchWordGender = async () => {
+      if (deboundedWord) {
+        setIsLoading(true);
+        setWordGender(await getGermanGender(deboundedWord));
+        setIsLoading(false);
+      } else {
+        setWordGender(Genders.None);
+      }
+    };
+
+    fetchWordGender();
+  }, [setWordGender, deboundedWord]);
 
   useEffect(() => setAppear(true), [wordGender]);
 
@@ -31,11 +39,15 @@ const InputModal: FC<InputModalProps> = (props) => {
     const letterOnlyText = text.replace(/[^a-zA-Z\x7f-\xff ]/g, "");
     const wordSplit = letterOnlyText.split(/\s+/);
     const lastWord = wordSplit.pop() ?? "";
-    const newWord = lastWord.charAt(0).toUpperCase() + lastWord.slice(1);
+    const newWord =
+      lastWord.charAt(0).toUpperCase() + lastWord.slice(1).toLocaleLowerCase();
 
     setWord(newWord);
     setWordInput(letterOnlyText);
   };
+
+  // Is a seperate variable because Prettier doesn't correctly format this in the JSX
+  const showText = (deboundedWord && wordGender !== Genders.None) || isLoading;
 
   return (
     <div
@@ -55,26 +67,30 @@ const InputModal: FC<InputModalProps> = (props) => {
         value={wordInput}
         onChange={(event) => getLastCapitalizedWord(event.target.value)}
       ></input>
+
       {/* Can use an and logical operator since debouncedWord cannot be 0 */}
-      {deboundedWord && (
-        <p
-          id='wordGender'
-          className={`${styles.wordGender} text-4xl font-extrabold leading-none tracking-tight mt-12 mb-5 md:text-6xl lg:text-7xl`}
-          onAnimationEnd={() => setAppear(false)}
-          data-appear={appear}
-        >
-          {wordGender === Genders.None ? (
-            "Invalid Word"
+      {showText && (
+        <div className='text-4xl font-extrabold leading-none tracking-tight mt-12 mb-5 md:text-6xl lg:text-7xl'>
+          {isLoading ? (
+            <Loader />
           ) : (
-            <span
-              className={`${wordGender.toLowerCase()} ${
-                wordGender === Genders.Masculine ? "text-white" : ""
-              } p-3`}
-            >
-              {wordGender}
-            </span>
+            <>
+              {
+                <span
+                  className={`${
+                    styles.wordGender
+                  } ${wordGender.toLowerCase()} ${
+                    wordGender === Genders.Masculine ? "text-white" : ""
+                  } p-3`}
+                  onAnimationEnd={() => setAppear(false)}
+                  data-appear={appear}
+                >
+                  {wordGender === Genders.Invalid ? "Invalid Word" : wordGender}
+                </span>
+              }
+            </>
           )}
-        </p>
+        </div>
       )}
     </div>
   );

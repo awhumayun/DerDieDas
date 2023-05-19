@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import InputModal from "./InputModal";
+import InputModal from "./inputModal";
 import { Genders } from "../../constants/genders";
 import "@testing-library/jest-dom/extend-expect";
 

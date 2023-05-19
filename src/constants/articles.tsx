@@ -4,7 +4,7 @@ export enum Articles {
   Neuter = "Das",
 }
 
-export const articles: string[] = [
+export const articles: Articles[] = [
   Articles.Masculine,
   Articles.Feminine,
   Articles.Neuter,
