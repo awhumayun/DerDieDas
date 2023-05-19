@@ -8,8 +8,9 @@ DerDieDas is a website that determines the gender of a German noun which can be 
 - CSS
 - TypeScript
 - React
-- [Tailwind CSS](https://tailwindcss.com/)
 - Jest
+- [Tailwind CSS](https://tailwindcss.com/)
+- [German Gender API](https://german-gender-api.deta.dev/) by [Andrew-2069](https://github.com/Andrew-2609)
 
 ## Available Scripts
 
@@ -41,3 +42,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run deploy`
 
 Deploys the app for production from the `build` folder.
+
+### `npm run build-and-deploy`
+
+Runs `npm run build` and `npm run deploy`

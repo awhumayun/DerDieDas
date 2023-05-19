@@ -1,7 +1,8 @@
 import { Genders, genders } from "../../constants/genders";
 import { articles } from "../../constants/articles";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./flag.module.css";
+import { usePrevious } from "../../hooks/usePrevious";
 
 interface FlagProps {
   wordGender: Genders;
@@ -10,16 +11,6 @@ interface FlagProps {
 const Flag: FC<FlagProps> = (props) => {
   const { wordGender } = props;
   const [isFinished, setIsFinished] = useState([false, false, false]);
-
-  const usePrevious = (value: any) => {
-    const ref = useRef();
-
-    useEffect(() => {
-      ref.current = value;
-    }, [value]);
-
-    return ref.current ?? Genders.None;
-  };
 
   // Not in a useEffect function because React Hook "usePrevious" cannot be called inside a callback
   const previousWordGender: Genders = usePrevious(wordGender);

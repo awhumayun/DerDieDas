@@ -3,6 +3,7 @@ export enum Genders {
   Feminine = "Feminine",
   Neuter = "Neuter",
   None = "None",
+  Invalid = "Invalid",
 }
 
 export const genders: Genders[] = [

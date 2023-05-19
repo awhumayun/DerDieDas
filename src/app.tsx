@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./components/header/header";
 import Flag from "./components/flag/flag";
-import InputModal from "./components/InputModal/InputModal";
+import InputModal from "./components/inputModal/inputModal";
 import { Genders } from "./constants/genders";
 
 const App = () => {
