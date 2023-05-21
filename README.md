@@ -1,6 +1,6 @@
 # DerDieDas
 
-DerDieDas is a website that determines the gender of a German noun which can be accessed at [https://awhumayun.github.io/DerDieDas/](https://awhumayun.github.io/DerDieDas/).
+DerDieDas is a website that determines the gender of a German noun which can be accessed at [https://awhumayun.github.io/derdiedas/](https://awhumayun.github.io/derdiedas/).
 
 ## Tools Used
 
