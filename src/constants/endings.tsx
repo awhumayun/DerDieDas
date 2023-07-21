@@ -1,0 +1,52 @@
+export const masculineEndings: string[] = [
+  "ant",
+  "ast",
+  "ich",
+  "ig",
+  "ismus",
+  "ling",
+  "or",
+  "us",
+];
+
+export const feminineEndings: string[] = [
+  "a",
+  "ei",
+  "enz",
+  "heit",
+  "ie",
+  "ik",
+  "in",
+  "keit",
+  "schaft",
+  "sion",
+  "tät",
+  "tion",
+  "ung",
+  "ur",
+  "e",
+  // masculine ending of -ast doesn't conflict because masculine is checked first
+  "t",
+];
+
+export const neuterEndings: string[] = [
+  "chen",
+  "lein",
+  "ma",
+  "ment",
+  "sel",
+  "tel",
+  "tum",
+  "um",
+  "al",
+  "an",
+  "ar",
+  "är",
+  "at",
+  "ent",
+  "ett",
+  "ier",
+  "iv",
+  "o",
+  "on",
+];

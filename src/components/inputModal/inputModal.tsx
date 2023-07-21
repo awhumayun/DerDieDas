@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { Genders } from "../../constants/genders";
-import { getGermanGender } from "../../services/germanGender";
+import { determineGender } from "../../helpers/genders";
 import Loader from "../loader/loader";
 import styles from "./inputModal.module.css";
 
@@ -23,7 +23,7 @@ const InputModal: FC<InputModalProps> = (props) => {
     const fetchWordGender = async () => {
       if (deboundedWord) {
         setIsLoading(true);
-        setWordGender(await getGermanGender(deboundedWord));
+        setWordGender(determineGender(deboundedWord));
         setIsLoading(false);
       } else {
         setWordGender(Genders.None);
