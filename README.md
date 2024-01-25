@@ -42,7 +42,3 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run deploy`
 
 Deploys the app for production from the `build` folder.
-
-### `npm run build-and-deploy`
-
-Runs `npm run build` and `npm run deploy`
