@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/derdiedas/static/css/main.5221bc3c.css",
-    "main.js": "/derdiedas/static/js/main.117f99b0.js",
-    "static/js/787.62f89331.chunk.js": "/derdiedas/static/js/787.62f89331.chunk.js",
+    "main.css": "/derdiedas/static/css/main.c900cd10.css",
+    "main.js": "/derdiedas/static/js/main.64a07dfb.js",
+    "static/js/496.da29f45f.chunk.js": "/derdiedas/static/js/496.da29f45f.chunk.js",
     "index.html": "/derdiedas/index.html",
-    "main.5221bc3c.css.map": "/derdiedas/static/css/main.5221bc3c.css.map",
-    "main.117f99b0.js.map": "/derdiedas/static/js/main.117f99b0.js.map",
-    "787.62f89331.chunk.js.map": "/derdiedas/static/js/787.62f89331.chunk.js.map"
+    "main.c900cd10.css.map": "/derdiedas/static/css/main.c900cd10.css.map",
+    "main.64a07dfb.js.map": "/derdiedas/static/js/main.64a07dfb.js.map",
+    "496.da29f45f.chunk.js.map": "/derdiedas/static/js/496.da29f45f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5221bc3c.css",
-    "static/js/main.117f99b0.js"
+    "static/css/main.c900cd10.css",
+    "static/js/main.64a07dfb.js"
   ]
 }
