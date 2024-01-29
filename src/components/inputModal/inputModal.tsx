@@ -77,6 +77,7 @@ const InputModal: FC<InputModalProps> = (props) => {
             <>
               {
                 <span
+                  id='genderAnswer'
                   className={`${
                     styles.wordGender
                   } ${wordGender.toLowerCase()} ${

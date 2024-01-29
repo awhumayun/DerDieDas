@@ -11,6 +11,7 @@ DerDieDas is a website that determines the gender of a German noun which can be 
 - Jest
 - [Tailwind CSS](https://tailwindcss.com/)
 - ~~[German Gender API](https://german-gender-api.deta.dev/) by [Andrew-2069](https://github.com/Andrew-2609)~~ The API is no longer avaliable
+- [Cypress](https://www.cypress.io/)
 
 ## Available Scripts
 
@@ -41,4 +42,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run deploy`
 
-Deploys the app for production from the `build` folder.
+Deploys the app for production to the GitHub pages from the `build` folder.
+
+### `npm run cypress:open`
+
+Runs Cypress for E2E Testing.
