@@ -1,4 +1,9 @@
 import {
+  commonMasculineWords,
+  commonFeminineWords,
+  commonNeuterWords,
+} from "../constants/commonWords";
+import {
   masculineEndings,
   feminineEndings,
   neuterEndings,
@@ -9,12 +14,16 @@ import { feminineExceptions } from "../constants/exceptions/feminine";
 import { neuterExceptions } from "../constants/exceptions/neuter";
 
 export const determineGender = (word: string): Genders => {
-  // Need to check exceptions first before checking endings
-  if (isWordException(word, masculineExceptions)) {
+  // need to check exceptions first before checking endings
+  if (isWordIncluded(word, [...commonMasculineWords, ...masculineExceptions])) {
     return Genders.Masculine;
-  } else if (isWordException(word, feminineExceptions)) {
+  } else if (
+    isWordIncluded(word, [...commonFeminineWords, ...feminineExceptions])
+  ) {
     return Genders.Feminine;
-  } else if (isWordException(word, neuterExceptions)) {
+  } else if (
+    isWordIncluded(word, [...commonNeuterWords, ...neuterExceptions])
+  ) {
     return Genders.Neuter;
   }
 
@@ -33,6 +42,6 @@ const doesWordHaveEnding = (word: string, endings: string[]): boolean => {
   return endings.filter((ending: string) => word.endsWith(ending)).length > 0;
 };
 
-const isWordException = (word: string, exceptions: string[]): boolean => {
+const isWordIncluded = (word: string, exceptions: string[]): boolean => {
   return exceptions.includes(word);
 };

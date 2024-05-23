@@ -25,7 +25,7 @@ export const feminineEndings: string[] = [
   "ung",
   "ur",
   "e",
-  // masculine ending of -ast doesn't conflict because masculine is checked first
+  // Masculine ending of -ast doesn't conflict because masculine is checked first
   "t",
 ];
 

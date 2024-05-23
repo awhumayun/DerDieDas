@@ -25,6 +25,7 @@ const InputModal: FC<InputModalProps> = (props) => {
         setIsLoading(true);
         setWordGender(determineGender(deboundedWord));
         setIsLoading(false);
+        setAppear(true);
       } else {
         setWordGender(Genders.None);
       }
@@ -32,8 +33,6 @@ const InputModal: FC<InputModalProps> = (props) => {
 
     fetchWordGender();
   }, [setWordGender, deboundedWord]);
-
-  useEffect(() => setAppear(true), [wordGender]);
 
   const getLastCapitalizedWord = (text: string) => {
     const letterOnlyText = text.replace(/[^a-zA-Z\x7f-\xff ]/g, "");
@@ -82,7 +81,7 @@ const InputModal: FC<InputModalProps> = (props) => {
                     styles.wordGender
                   } ${wordGender.toLowerCase()} ${
                     wordGender === Genders.Masculine ? "text-white" : ""
-                  } p-3`}
+                  } p-3 opacitiy-0`}
                   onAnimationEnd={() => setAppear(false)}
                   data-appear={appear}
                 >

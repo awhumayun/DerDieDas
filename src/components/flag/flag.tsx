@@ -12,7 +12,7 @@ const Flag: FC<FlagProps> = (props) => {
   const { wordGender } = props;
   const [isFinished, setIsFinished] = useState([false, false, false]);
 
-  // Not in a useEffect function because React Hook "usePrevious" cannot be called inside a callback
+  // Not in a useEffect function because the "usePrevious" hook cannot be called inside a callback
   const previousWordGender: Genders = usePrevious(wordGender);
 
   const getStartStyle = (gender: Genders): string => {
